@@ -6,6 +6,7 @@ import com.google.gson.JsonSyntaxException
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.junit.Assert.*
 import java.io.FileNotFoundException
 
 class QuoteManagerTest {
@@ -33,4 +34,42 @@ class QuoteManagerTest {
         val context = ApplicationProvider.getApplicationContext<Context>()
         quoteManager.populateQuotesFromAssets(context, "malformed.json")
     }
+
+    @Test()
+    fun testPopulateQuotesFromAssets_expected_ValidJson() {
+
+        val quoteManager = QuoteManager()
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        quoteManager.populateQuotesFromAssets(context, "quote.json")
+        assertEquals(7, quoteManager.quoteList.size)
+    }
+
+    @Test
+    fun testQuote_previousQuote(){
+        val quoteManager = QuoteManager()
+        quoteManager.populateQuotes(arrayOf(
+            Quote("What is Qwerty", "Dino"),
+            Quote("This is Qwerty", "Dine"),
+            Quote("That is Qwerty", "Dimo"),
+            Quote("Who is Qwerty", "Dimo"),
+        ))
+
+        val quote = quoteManager.getPreviousQuote()
+        assertEquals("Dino", quote.author)
+    }
+
+    @Test
+    fun testQuote_nextQuote(){
+        val quoteManager = QuoteManager()
+        quoteManager.populateQuotes(arrayOf(
+            Quote("What is Qwerty", "Dino"),
+            Quote("This is Qwerty", "Dine"),
+            Quote("That is Qwerty", "Dimo"),
+            Quote("Who is Qwerty", "Dimo"),
+        ))
+
+        val quote = quoteManager.getNextQuote()
+        assertEquals("Dine", quote.author)
+    }
+
 }
