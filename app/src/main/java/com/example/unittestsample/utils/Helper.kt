@@ -24,4 +24,13 @@ class Helper {
 
         return isPalindrome
     }
+
+    fun checkPassword(pass : String) : Boolean{
+        if(pass.isNotEmpty() && pass.length > 6 && pass.length < 15){
+            return true
+        }
+        else {
+            return false
+        }
+    }
 }
