@@ -40,4 +40,25 @@ class HelperPasswordTest {
         var value = helper.checkPassword("abcdefghdbewdjiewjkj")
         assertEquals(false, value)
     }
+
+    // tests for reverse string
+
+    @Test
+    fun testReverseString_input_empty_expeceted_pass(){
+        var result = helper.reverseString("")
+        assertEquals("", result)
+    }
+
+    @Test
+    fun testReverseString_input_qwert_expeceted_pass(){
+        var result = helper.reverseString("qwert")
+        assertEquals("trewq", result)
+    }
+
+    @Test
+    fun testReverseString_input_trip_expeceted_fail(){
+        var result = helper.reverseString("trip")
+        assertEquals("pirt", result)
+    }
+
 }

@@ -33,4 +33,22 @@ class Helper {
             return false
         }
     }
+
+    fun reverseString(input : String) : String{
+
+        if(input.isEmpty()){
+            return ""
+        }
+        else {
+
+            var charArr = input.toCharArray()
+            for(i in 0 until (charArr.size/2)){
+                var temp = charArr[i]
+                charArr[i] = charArr[charArr.size - 1 -i]
+                charArr[charArr.size - 1 -i] = temp
+            }
+
+            return String(charArr)
+        }
+    }
 }
