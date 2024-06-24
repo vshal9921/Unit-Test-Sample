@@ -44,7 +44,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.gson)
     testImplementation(libs.junit)
-    testImplementation("junit:junit:4.12")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
