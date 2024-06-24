@@ -34,4 +34,11 @@ class HelperTest {
         val result = helper.checkPalindrome("levels")
         assertEquals( false, result)
     }
+
+    @Test
+    fun checkPalindrome_input_staats_expected_true(){
+
+        val result = helper.checkPalindrome("staats")
+        assertEquals(true, result)
+    }
 }
